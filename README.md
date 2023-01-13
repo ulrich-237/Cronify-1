@@ -1,34 +1,18 @@
 # Cronify
 
-Simply monitor your Cron
-
-[![Pipeline-CI](https://github.com/yoanbernabeu/cronify/actions/workflows/ci.yml/badge.svg)](https://github.com/yoanbernabeu/cronify/actions/workflows/ci.yml) [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](LICENSE)
-
-
-![Logo](public/img/logo_ban.png)
-
----
-
 ##  1. <a name='TableofContents'></a>Table of Contents
 
 <!-- vscode-markdown-toc -->
 * 1. [Table of Contents](#TableofContents)
 * 2. [What is cronify ?](#Whatiscronify)
 * 3. [How to install the app ?](#Howtoinstalltheapp)
-	* 3.1. [Prerequisites](#Prerequisites)
-	* 3.2. [Clone and install](#Cloneandinstall)
-	* 3.3. [Create a new User](#CreateanewUser)
+	* 3.1. [Clone and install](#Cloneandinstall)
+	* 3.2. [Create a new User](#CreateanewUser)
 * 4. [How to use ?](#Howtouse)
 	* 4.1. [Create a new App](#CreateanewApp)
 	* 4.2. [Create a new Job](#CreateanewJob)
 	* 4.3. [Get Cron Code snippet](#GetCronCodesnippet)
 * 5. [How to quickly test Cronify?](#HowtoquicklytestCronify)
-	* 5.1. [ Create a docker-compose.yml](#Createadocker-compose.yml)
-	* 5.2. [Start containers](#Startcontainers)
-	* 5.3. [Launch your browser and have fun !](#Launchyourbrowserandhavefun)
-* 6. [ Build your own Docker image](#BuildyourownDockerimage)
-* 7. [License](#License)
-
 <!-- vscode-markdown-toc-config
 	numbering=true
 	autoSave=true
@@ -60,7 +44,6 @@ This documentation offers a simplified installation FOR DEVELOPMENT ONLY with Do
 - [PHP 8.1](https://www.php.net/downloads.php)
 - [Composer](https://getcomposer.org/)
 - [Docker](https://www.docker.com/)
-- [Make](https://www.gnu.org/software/make/)
 - [Symfony CLI](https://symfony.com/download)
 
 ###  3.2. <a name='Cloneandinstall'></a>Clone and install
@@ -115,7 +98,7 @@ services:
       - db-data:/var/lib/postgresql/data:rw
 
   app:
-    image: yoanbernabeu/cronify:latest
+    image: ulrichfokou/cronify:latest
     ports:
       - "8080:80"
     environment:
@@ -138,16 +121,5 @@ docker-compose up -d
 	- username: demo@demo.com
 	- password: password
 
-##  6. <a name='BuildyourownDockerimage'></a> Build your own Docker image
 
-If you want to build your own Docker image, we provide a make command that you **need to adapt to your context**.
-
-*Do not run the command without modifications, you would not have the rights to upload the image to the Docker Hub.*
-
-```bash
-make docker-build-and-push
 ```
-
-##  7. <a name='License'></a>License
-
-See the bundled [LICENSE](LICENCE) file.

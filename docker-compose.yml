@@ -6,16 +6,19 @@ services:
     image: postgres:${POSTGRES_VERSION:-13}-alpine
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-app}
-      # You should definitely change the password in production
+      # Definition de l utilisateur et du mot de passe par defaut
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ChangeMe}
       POSTGRES_USER: ${POSTGRES_USER:-symfony}
     volumes:
       - db-data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+  #mise en place de l 'image docker
+  app:
+    image: yoanbernabeu/cronify:latest
+    ports:
+      - "8080:80"
+    # definition de l'utilisateur par de faut et du mot de passe par defaut
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-symfony}:${POSTGRES_PASSWORD:-ChangeMe}@database:5432/${POSTGRES_DB:-app}     
 
 volumes:
-###> doctrine/doctrine-bundle ###
   db-data:
-###< doctrine/doctrine-bundle ###
